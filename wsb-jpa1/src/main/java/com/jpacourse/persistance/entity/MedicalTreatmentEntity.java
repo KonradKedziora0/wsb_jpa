@@ -42,4 +42,8 @@ public class MedicalTreatmentEntity {
 		this.type = type;
 	}
 
+	// Relacja dwustronna
+	@ManyToOne
+	@JoinColumn(name = "visit_id", nullable = false)
+	private VisitEntity visit;
 }
