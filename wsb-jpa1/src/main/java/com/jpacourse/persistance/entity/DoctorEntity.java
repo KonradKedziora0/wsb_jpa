@@ -95,7 +95,6 @@ public class DoctorEntity {
 	private AddressEntity address;
 
 	// Relacja jednostronna od strony rodzica
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "doctor_id", nullable = false)
+	@OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<VisitEntity> visits = new ArrayList<>();
 }
