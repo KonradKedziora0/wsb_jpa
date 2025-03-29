@@ -1,6 +1,8 @@
 package com.jpacourse.persistance.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -84,5 +86,15 @@ public class PatientEntity {
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
+
+	// Relacja jednostronna od strony dziecka
+	@ManyToOne
+	@JoinColumn(name = "address_id", nullable = false)
+	private AddressEntity address;
+
+	// Relacja jednostronna od strony rodzica
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "patient_id", nullable = false)
+	private List<VisitEntity> visits = new ArrayList<>();
 
 }
