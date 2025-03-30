@@ -14,6 +14,8 @@ public class PatientEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	private Long pesel;
+
 	@Column(nullable = false)
 	private String firstName;
 
@@ -37,6 +39,14 @@ public class PatientEntity {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getPesel() {
+		return pesel;
+	}
+
+	public void setPesel(Long pesel) {
+		this.pesel = pesel;
 	}
 
 	public String getFirstName() {
@@ -86,6 +96,8 @@ public class PatientEntity {
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
+
+
 
 	// Relacja jednostronna od strony dziecka
 	@ManyToOne
