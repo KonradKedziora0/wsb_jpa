@@ -57,4 +57,15 @@ public class VisitTO implements Serializable {
     public void setTypes(List<TreatmentType> types) {
         this.types = types;
     }
+
+    public void setTreatments(List<MedicalTreatmentTO> treatments) {
+        this.types = treatments.stream()
+                .map(MedicalTreatmentTO::getType)
+                .toList();
+    }
+
+    public void setDoctor(VisitEntity visitEntity) {
+        this.doctorFirstName = visitEntity.getDoctor().getFirstName();
+        this.doctorLastName = visitEntity.getDoctor().getLastName();
+    }
 }

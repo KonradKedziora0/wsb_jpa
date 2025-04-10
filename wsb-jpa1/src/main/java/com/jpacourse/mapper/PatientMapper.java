@@ -5,6 +5,9 @@ import com.jpacourse.dto.PatientTO;
 import com.jpacourse.persistance.entity.AddressEntity;
 import com.jpacourse.persistance.entity.PatientEntity;
 
+import java.time.LocalDateTime;
+import java.util.stream.Collectors;
+
 public final class PatientMapper
 {
 
@@ -23,6 +26,10 @@ public final class PatientMapper
         patientTO.setEmail(patientEntity.getEmail());
         patientTO.setPatientNumber(patientEntity.getPatientNumber());
         patientTO.setDateOfBirth(patientEntity.getDateOfBirth());
+        patientTO.setCompletedVisits(patientEntity.getVisits().stream()
+                .map(VisitMapper::mapToTO)
+                .filter(visit -> visit.getTime().isBefore(LocalDateTime.now()))
+                .collect(Collectors.toList()));
         return patientTO;
     }
 

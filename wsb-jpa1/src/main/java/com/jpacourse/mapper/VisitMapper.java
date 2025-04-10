@@ -7,10 +7,12 @@ import com.jpacourse.persistance.entity.MedicalTreatmentEntity;
 import com.jpacourse.persistance.entity.PatientEntity;
 import com.jpacourse.persistance.entity.VisitEntity;
 
+import java.util.stream.Collectors;
+
 public final class VisitMapper
 {
 
-    public static VisitTO mapToTO(final VisitEntity visitEntity, final DoctorEntity doctorEntity, final MedicalTreatmentEntity medicalTreatmentEntity)
+    public static VisitTO mapToTO(final VisitEntity visitEntity)
     {
         if (visitEntity == null)
         {
@@ -19,8 +21,10 @@ public final class VisitMapper
         final VisitTO visitTO = new VisitTO();
         visitTO.setId(visitEntity.getId());
         visitTO.setTime(visitEntity.getTime());
-        visitTO.setDoctorFirstName(doctorEntity.getFirstName());
-        visitTO.setDoctorLastName(doctorEntity.getLastName());
+        visitTO.setDoctorFirstName(visitEntity.getDoctor().getFirstName() + " " + visitEntity.getDoctor().getLastName());
+        visitTO.setTreatments(visitEntity.getTreatments().stream()
+                .map(MedicalTreatmentMapper::mapToTO)
+                .collect(Collectors.toList()));
         return visitTO;
     }
 

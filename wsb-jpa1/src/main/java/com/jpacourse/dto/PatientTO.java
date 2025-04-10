@@ -17,7 +17,7 @@ public class PatientTO implements Serializable
     private String email;
     private String patientNumber;
     private LocalDate dateOfBirth;
-    private List<VisitTO> visits;
+    private List<VisitTO> completedVisits;
 
 
     public Long getId() {
@@ -84,11 +84,11 @@ public class PatientTO implements Serializable
         this.dateOfBirth = dateOfBirth;
     }
 
-    public List<VisitTO> getVisits() {
-        return visits;
+    public List<VisitTO> getCompletedVisits() {
+        return completedVisits;
     }
 
-    public void setVisits(List<VisitTO> visits) {
-        this.visits = visits;
+    public void setCompletedVisits(List<VisitTO> completedVisits) {
+        this.completedVisits = completedVisits;
     }
 }
