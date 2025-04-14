@@ -112,6 +112,10 @@ public class PatientEntity {
 	@JoinColumn(name = "address_id", nullable = false)
 	private AddressEntity address;
 
+	public AddressEntity getAddress() {return address;}
+
+	public void setAddress(AddressEntity address) {this.address = address;}
+
 	// Relacja jednostronna od strony rodzica
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "patient_id", nullable = false)

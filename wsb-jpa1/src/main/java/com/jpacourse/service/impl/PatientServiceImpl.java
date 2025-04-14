@@ -32,4 +32,15 @@ public class PatientServiceImpl implements PatientService
         final PatientEntity entity = patientDao.findOne(id);
         return PatientMapper.mapToTO(entity);
     }
+    @Override
+    @Transactional
+    public PatientTO deletePatient(Long id) {
+        if (patientDao.exists(id)) { // Używamy exists() z Dao
+            PatientEntity entity = patientDao.findOne(id);
+            patientDao.delete(id); // Używamy delete() z Dao
+            return PatientMapper.mapToTO(entity);
+        } else {
+            return null;
+        }
+    }
 }
