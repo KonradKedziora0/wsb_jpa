@@ -67,4 +67,15 @@ public class VisitEntity {
 	@OneToMany(mappedBy = "visit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<MedicalTreatmentEntity> treatments = new ArrayList<>();
 
+	@ManyToOne
+	@JoinColumn(name = "patient_id", nullable = false)
+	private PatientEntity patient;
+	public PatientEntity getPatient()
+	{
+		return patient;
+	}
+	public void setPatient(PatientEntity patient)
+	{
+		this.patient = patient;
+	}
 }

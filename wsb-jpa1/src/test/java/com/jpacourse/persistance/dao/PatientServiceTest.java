@@ -36,6 +36,7 @@ public class PatientServiceTest {
 
     @Autowired
     private MedicalTreatmentDao medicalTreatmentDao;
+
     @BeforeEach
     public void cleanup() {
         medicalTreatmentDao.deleteAll();
@@ -47,8 +48,7 @@ public class PatientServiceTest {
 
     @Transactional
     @Test
-    public void testShouldRemovePatientButNotDoctors()
-    {
+    public void testShouldRemovePatientButNotDoctors() {
         //adres
         AddressEntity address = new AddressEntity();
         address.setCity("Wrocław");
@@ -81,14 +81,17 @@ public class PatientServiceTest {
         visit1.setDescription("Pierwsza wizyta");
         visit1.setTime(LocalDateTime.now());
         visit1.setDoctor(doctor);
+        visit1.setPatient(patient);
 
         VisitEntity visit2 = new VisitEntity();
         visit2.setDescription("Druga wizyta");
         visit2.setTime(LocalDateTime.now().plusDays(1));
         visit2.setDoctor(doctor);
+        visit2.setPatient(patient);
 
         patient.setVisits(List.of(visit1, visit2));
         patient = patientDao.save(patient);
+
         Long patientId = patient.getId();
         Long doctorId = doctor.getId();
 
@@ -108,8 +111,7 @@ public class PatientServiceTest {
 
     @Transactional
     @Test
-    public void testShouldReturnPatientTOW()
-    {
+    public void testShouldReturnPatientTOW() {
         AddressEntity address = new AddressEntity();
         address.setCity("Wrocław");
         address.setPostalCode("00-001");

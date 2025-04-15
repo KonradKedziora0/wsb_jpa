@@ -1,12 +1,9 @@
 package com.jpacourse.dto;
 
-import com.jpacourse.persistance.entity.MedicalTreatmentEntity;
-import com.jpacourse.persistance.entity.PatientEntity;
 import com.jpacourse.persistance.entity.VisitEntity;
 import com.jpacourse.persistance.enums.TreatmentType;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 

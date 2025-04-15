@@ -3,8 +3,6 @@ package com.jpacourse.dto;
 import com.jpacourse.persistance.enums.TreatmentType;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.List;
 
 public class MedicalTreatmentTO implements Serializable {
     private Long id;

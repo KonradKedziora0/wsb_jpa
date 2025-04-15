@@ -1,8 +1,5 @@
 package com.jpacourse.dto;
 
-import com.jpacourse.persistance.entity.VisitEntity;
-import org.springframework.cglib.core.Local;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;

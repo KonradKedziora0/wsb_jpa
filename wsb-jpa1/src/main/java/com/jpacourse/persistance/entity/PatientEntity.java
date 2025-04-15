@@ -1,7 +1,6 @@
 package com.jpacourse.persistance.entity;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,8 +116,9 @@ public class PatientEntity {
 	public void setAddress(AddressEntity address) {this.address = address;}
 
 	// Relacja jednostronna od strony rodzica
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "patient_id", nullable = false)
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	private List<VisitEntity> visits = new ArrayList<>();
+
+
 
 }
