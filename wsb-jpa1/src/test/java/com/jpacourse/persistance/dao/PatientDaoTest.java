@@ -1,5 +1,6 @@
 package com.jpacourse.persistance.dao;
 import com.jpacourse.persistance.entity.*;
+import com.jpacourse.persistance.repository.PatientRepository;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +19,8 @@ import static com.jpacourse.persistance.enums.Specialization.SURGEON;
 @Transactional
 public class PatientDaoTest
 {
-
+    @Autowired
+    private PatientRepository patientRepository;
     @Autowired
     private PatientDao patientDao;
 
@@ -97,5 +99,27 @@ public class PatientDaoTest
         Assertions.assertEquals(visitTime, visit.getTime().withNano(0));
         Assertions.assertEquals(doctor.getId(), visit.getDoctor().getId());
         Assertions.assertEquals(patient.getId(), visit.getPatient().getId());
+    }
+
+    @Test
+    void shouldFindPatientsByLastName() {
+        List<PatientEntity> result = patientRepository.findByLastName("Nowak");
+        Assertions.assertNotNull(result);
+        Assertions.assertFalse(result.isEmpty());
+    }
+
+    @Test
+    void shouldFindPatientsWithMoreThanXVisits() {
+        List<PatientEntity> result = patientRepository.findPatientsWithMoreThanXVisits(2);
+        Assertions.assertNotNull(result);
+        Assertions.assertFalse(result.isEmpty());
+    }
+
+    @Test
+    void shouldFindPatientsBornAfterGivenDate() {
+        LocalDate date = LocalDate.parse("1978-11-03");
+        List<PatientEntity> result = patientRepository.findByDateOfBirthAfter(date);
+        Assertions.assertNotNull(result);
+        Assertions.assertFalse(result.isEmpty());
     }
 }

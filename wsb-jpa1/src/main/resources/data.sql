@@ -31,17 +31,20 @@
             VALUES (4, 1103, 'DOC004', 'katarzyna.wojcik@clinic.pl', 'Katarzyna', 'Wójcik', '111222333', 'OCULIST');
 
 --Patient
-            INSERT INTO patient (id, pesel, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id)
-            VALUES (1, 123123123 , 'Marek', 'Nowak', '111222333', 'marek.nowak@email.com', 'PAT001', '1985-05-15', 1186);
+            INSERT INTO patient (id, version, pesel, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id)
+            VALUES (1, 0, 123123123, 'Marek', 'Nowak', '111222333', 'marek.nowak@email.com', 'PAT001', '1985-05-15', 1186);
 
-            INSERT INTO patient (id, pesel, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id)
-            VALUES (2, 0012345890, 'Agnieszka', 'Kowalska', '444555666', 'agnieszka.kowalska@email.com', 'PAT002', '1990-08-22', 1186);
+            INSERT INTO patient (id, version, pesel, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id)
+            VALUES (6, 0, 7524352346, 'Adam', 'Hovacic', '111234353', 'adam.hovacic@email.com', 'PAT006', '1999-02-15', 1103);
 
-            INSERT INTO patient (id, pesel, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id)
-            VALUES (3, 84234892409, 'Tomasz', 'Wiśniewski', '777888999', 'tomasz.wisniewski@email.com', 'PAT003', '1978-11-03', 1002);
+            INSERT INTO patient (id, version, pesel, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id)
+            VALUES (2, 0, 0012345890, 'Agnieszka', 'Kowalska', '444555666', 'agnieszka.kowalska@email.com', 'PAT002', '1990-08-22', 1186);
 
-            INSERT INTO patient (id, pesel, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id)
-            VALUES (4, 99853426234 , 'Karolina', 'Wójcik', '222333444', 'karolina.wojcik@email.com', 'PAT004', '1995-02-28', 1143);
+            INSERT INTO patient (id, version, pesel, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id)
+            VALUES (3, 0, 84234892409, 'Tomasz', 'Wiśniewski', '777888999', 'tomasz.wisniewski@email.com', 'PAT003', '1978-11-03', 1002);
+
+            INSERT INTO patient (id, version, pesel, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id)
+            VALUES (4, 0, 99853426234, 'Karolina', 'Wójcik', '222333444', 'karolina.wojcik@email.com', 'PAT004', '1995-02-28', 1143);
 
 --Visit
             INSERT INTO visit (doctor_id, patient_id, id, time, description)

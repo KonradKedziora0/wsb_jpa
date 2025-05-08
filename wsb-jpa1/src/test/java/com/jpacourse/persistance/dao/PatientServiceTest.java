@@ -18,7 +18,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 public class PatientServiceTest {
-
     @Autowired
     private PatientService patientService;
 
@@ -146,5 +145,11 @@ public class PatientServiceTest {
         assertThat(patientTO.getDateOfBirth()).isEqualTo(LocalDate.of(1985, 5, 15));
 
         assertThat(patientTO.getCompletedVisits()).isEmpty();
+    }
+
+    @Test
+    void shouldFindAllVisitsByPatientId() {
+        List<VisitEntity> visits = patientService.findAllVisitsByPatientId(1L);
+        assertThat(visits).isNotEmpty();
     }
 }

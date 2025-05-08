@@ -5,10 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "PATIENT")
 public class PatientEntity {
+	@Version
+	@Column(nullable = false)
+	private Integer version;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -116,7 +121,8 @@ public class PatientEntity {
 	public void setAddress(AddressEntity address) {this.address = address;}
 
 	// Relacja jednostronna od strony rodzica
-	@OneToMany(mappedBy = "patient", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SELECT)
 	private List<VisitEntity> visits = new ArrayList<>();
 
 
